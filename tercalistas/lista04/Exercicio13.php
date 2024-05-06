@@ -1,0 +1,29 @@
+<?php 
+
+
+//   13. FAca um programa que contenha a temperatura media de cada mes do ano e armazene as em uma lista.
+//apos isso calcule a media anual das temperaturas e mostre todas as temperatura acima da media anual,
+//e em que mes elas ocoreram (mostrar o mes por extenso:1-janeiro)
+
+$temperaturas = array(20.5, 21.3, 22.8, 24.5, 26.7, 28.2, 30.1, 29.6, 27.8, 25.4, 22.9, 21.0);
+
+$media_anual = array_sum($temperaturas) / count($temperaturas);
+
+$meses_acima_media = array();
+for ($i = 0; $i < count($temperaturas); $i++) {
+    if ($temperaturas[$i] > $media_anual) {
+       
+        $meses_acima_media[] = obterNomeMes($i + 1);
+    }
+}
+
+function obterNomeMes($numero_mes) {
+    $meses = array('Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro');
+    return $meses[$numero_mes - 1]; 
+}
+
+echo "Temperaturas acima da média anual ($media_anual °C) ocorreram nos seguintes meses:<br>";
+foreach ($meses_acima_media as $mes) {
+    echo "$mes<br>";
+}
+?>
